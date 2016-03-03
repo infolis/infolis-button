@@ -1,0 +1,2 @@
+--ignore=adjoining-classes,box-sizing,fallback-colors,box-model,important,known-properties,compatible-vendor-prefixes,ids
+--format=compact

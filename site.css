@@ -1,0 +1,19 @@
+.infolis-blurred
+/* .infolis-blurred *:not(*[class^='infolis']) */
+{
+    /* color: #ccc !important; */
+    /* background-color: white !important; */
+    /* opacity: 0.4 !important; */
+  /* display:none; */
+/* position: relative; */
+/* color: white; */
+/* background:white; */
+/* width: 0 !important; */
+/* max-height: 0 !important; */
+/* opacity: 0 !important; */
+/* visibility: hidden; */
+/* top:-1000px !important; */
+/* position: fixed; */
+/* top: 0; */
+/* transition: visibility 0s 2s, opacity 2s linear; */
+}
