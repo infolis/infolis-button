@@ -1,0 +1,168 @@
+<div class="infolis-button">
+  <div class="infolis-menu animated hidden">
+    <div class="row infolis-row-buttons">
+      <div class="col-sm-2 col-xs-3"></div>
+      <div class="col-sm-10 col-xs-9">
+        <div class="infolis-btn-group btn-group btn-group-sm pull-left" role="group" aria-label="...">
+          <a id="btn-fetch-all" class="btn btn-success"> <i class="fa fa-play fa-fw"></i>&nbsp; Fetch</a>
+          <a id="filter-toggle" class="btn btn-info">    <i class="fa fa-fw fa-search"></i>&nbsp; Filter</a>
+          <a id="btn-config" class="btn btn-primary">    <i class="fa fa-fw fa-cogs"></i>&nbsp; Config</a>
+          <!-- <a id="btn-prioritize" class="btn btn-primary" style="background-color: #A1AF32"> -->
+            <!-- <i class="fa fa-paint-brush"></i>&nbsp;Prioritize</a> -->
+          <!-- <a id="btn-cite" class="btn btn-info"> <i class="fa fa-fw fa-quote-left"></i>&nbsp; Cite!</a> -->
+          <!-- <a id="btn-cite" class="btn btn-warn"> <i class="fa fa-fw fa-"></i>&nbsp; </a> -->
+          <a id="btn-quit"      class="btn btn-danger"> <i class="fa fa-fw fa-remove"></i>&nbsp;     Stop</a>
+        </div>
+      </div>
+    </div>
+    <div class="row alert alert-danger infolis-error" style="display:none">
+      {{= it.error_message }}
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row infolis-row-publications">
+      <div class="col-sm-2 col-xs-3">
+        <h5>Publication</h5>
+      </div>
+      <div class="col-sm-10 col-xs-9">
+        <ul class="list-inline">
+          {{~ it.list('publications') :pub }}
+          <li>
+            <a href="http://doi.org/{{= pub.identifier }}" class="btn btn-xs btn-publication">
+              <i class="fa fa-fw fa-book">&nbsp;</i>
+              {{= pub.identifier }}
+            </a>
+          </li>
+          {{~}}
+        </ul>
+      </div>
+    </div>
+    <div class="row infolis-row-datasets">
+      <div class="col-sm-2 col-xs-3">
+        <h5>Datasets:</h5>
+      </div>
+      <div class="col-sm-10 col-xs-9">
+        <ul class="list-inline">
+          {{~ it.list('datasets') :data }}
+          <li class="toggle-group btn-group btn-group-xs"
+              data-collection="datasets"
+              data-id="{{= data.identifier }}">
+            <a class="btn btn-xs btn-dataset toggle-source">
+              <i class="fa fa-flask">&nbsp;</i>
+              {{= data.identifier }}
+            </a>
+            <a class="toggle-target btn btn-xs btn-tools" style="display: none;"
+              href="{{= (data.url ? data.url : 'http://doi.org/' + data.identifier) }}">
+              <i class="fa fa-link">&nbsp;</i><span class="label">Browse</span>
+            </a>
+            {{? it.button_type === 'result-list' }}
+            <a class="filter-preset btn btn-xs toggle-target btn-tools" style="display: none;">
+              <i class="fa fa-search">&nbsp;</i><span class="label">Filter</span>
+            </a>
+            {{?}}
+            {{? data.github }}
+            <a class="btn-github btn btn-xs btn-tools toggle-target" style="display: none;"
+              href="https://github.com/{{= data.github }}">
+              <i class="fa fa-fw fa-github">&nbsp;</i><span class="label">Github</span>
+              {{= data.github }}
+            </a>
+            {{?}}
+            {{? data.figshare }}
+            <a class="btn-figshare btn btn-xs btn-tools toggle-target" style="display: none;"
+              href="{{= data.figshare }}">
+              <i class="ai ai-fw ai-figshare">&nbsp;</i><span class="label">figshare</span>
+            </a>
+            {{?}}
+            <div class="btn-group">
+              <a class="cite-this toggle-target btn btn-xs btn-tools dropdown-toggle"
+                style="display: none;"
+                data-toggle="dropdown">
+                <i class="fa fa-quote-right">&nbsp;</i><span class="label">Cite!</span> <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu pull-right" role="menu">
+                <li><a class="export" data-export="bibtex">Literaturverwaltung (BibTeX)</a></li>
+                <li><a class="export" data-export="ris">Literaturverwaltung (RIS)</a></li>
+                <li><a class="export" data-export="endnote">Literaturverwaltung (EndNote)</a></li>
+                <li><a class="export" data-export="apa">APA Style Citation</a></li>
+              </ul>
+            </div>
+          </li>
+          {{~}}
+        </ul>
+      </div>
+    </div>
+    <div class="row infolis-row-databases">
+      <div class="col-sm-2 col-xs-3">
+        <h5>
+          Databases:
+        </h5>
+      </div>
+      <div class="col-sm-10 col-xs-9">
+        <ul class="list-inline">
+          {{~ it.list('databases') :data }}
+          <li class="toggle-group btn-group btn-group-xs"
+              data-collection="databases"
+              data-id="{{= data.identifier }}">
+            <a class="btn btn-xs btn-default btn-database toggle-source">
+              <i class="fa fa-fw fa-database">&nbsp;</i>
+              {{= data.identifier }}
+            </a>
+            <a class="toggle-target btn btn-xs btn-tools" style="display: none;"
+              href="{{= data.url }}">
+              <i class="fa fa-fw fa-link">&nbsp;</i><span class="label">Browse</span>
+            </a>
+            {{? it.button_type === 'result-list' }}
+            <a class="filter-preset btn btn-xs toggle-target btn-tools" style="display: none;">
+              <i class="fa fa-search">&nbsp;</i><span class="label">Filter</span>
+            </a>
+            {{?}}
+            <a class="cite-this toggle-target btn btn-xs btn-tools dropdown-toggle"
+              style="display: none;"
+              data-toggle="dropdown">
+              <i class="fa fa-quote-right">&nbsp;</i><span class="label">Cite!</span> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu pull-right" role="menu">
+              <li><a class="export" data-export="bibtex">Literaturverwaltung (BibTeX)</a></li>
+              <li><a class="export" data-export="ris">Literaturverwaltung (RIS)</a></li>
+              <li><a class="export" data-export="ris">Literaturverwaltung (EndNote)</a></li>
+              <li><a class="export" data-export="apa">APA Style Citation</a></li>
+            </ul>
+          </li>
+          {{~}}
+        </ul>
+      </div>
+    </div>
+    <div class="row infolis-status">
+      status: <span class="infolis-status">{{= it.status }}</span>
+      | type: {{= it.button_type }}
+      <span class="infolis-result-length">| Found {{= it.results.length || "0" }} publications</span>
+    </div>
+  </div>
+  <div class="infolis-logo">
+    <div class="infolis-logo-img animated">
+      <div class="infolis-logo-overlay animated">
+      </div>
+    </div>
+    <div class="infolis-number">{{= it.number_found() > 0 ? it.number_found() : '0' }}</div>
+  </div>
+</div>
+{{? it.button_type === 'result-list' }}
+<div id="infolis-filterbox" style="display:none">
+  <div class="input-group input-group-lg">
+    <span class="input-group-addon">
+      <!-- <span class="checkbox-inline btn-database"> -->
+        <i class="fa fa-fw fa-database">&nbsp;</i>
+        <input id="filter-databases" type="checkbox"/>
+      <!-- </span> -->
+      <!-- <span class="checkbox-inline btn-dataset"> -->
+        <i class="fa fa-fw fa-flask">&nbsp;</i>
+        <input id="filter-datasets" type="checkbox"/>
+      <!-- </span> -->
+    </span>
+    <input type="text" class="form-control" placeholder="Database, Index, Name ..." id="filter-input">
+    <span class="input-group-addon">
+      <span id="filter-status"></span>
+      <i id="filter-clear" class="fa fa-fw fa-times">&nbsp;</i>
+    </span>
+  </div>
+</div>
+{{?}}

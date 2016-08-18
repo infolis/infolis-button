@@ -1,0 +1,138 @@
+.infolis-button
+	.infolis-menu.animated.hidden
+		.row.infolis-row-buttons
+			.col-sm-2.col-xs-3
+			.col-sm-10.col-xs-9
+				.infolis-btn-group.btn-group.btn-group-sm.pull-left(role='group', aria-label='...')
+					a#btn-fetch-all.btn.btn-success
+						i.fa.fa-play.fa-fw
+						| &nbsp; Fetch
+					a#filter-toggle.btn.btn-info
+						i.fa.fa-fw.fa-search
+						| &nbsp; Filter
+					a#btn-config.btn.btn-primary
+						i.fa.fa-fw.fa-cogs
+						| &nbsp; Config
+					// <a id="btn-prioritize" class="btn btn-primary" style="background-color: #A1AF32">
+					// <i class="fa fa-paint-brush"></i>&nbsp;Prioritize</a>
+					// <a id="btn-cite" class="btn btn-info"> <i class="fa fa-fw fa-quote-left"></i>&nbsp; Cite!</a>
+					// <a id="btn-cite" class="btn btn-warn"> <i class="fa fa-fw fa-"></i>&nbsp; </a>
+					a#btn-quit.btn.btn-danger
+						i.fa.fa-fw.fa-remove
+						| &nbsp;     Stop
+		.row.alert.alert-danger.infolis-error(style='display:none')
+			| {{= it.error_message }}
+		.row &nbsp;
+		.row.infolis-row-publications
+			.col-sm-2.col-xs-3
+				h5 Publication
+			.col-sm-10.col-xs-9
+				ul.list-inline
+					| {{~ it.list("publications") :pub }}
+					li
+						a.btn.btn-xs.btn-publication(href='http://doi.org/{{= pub.identifier }}')
+							i.fa.fa-fw.fa-book &nbsp; {{= pub.identifier }}
+					| {{~}}
+		.row.infolis-row-datasets
+			.col-sm-2.col-xs-3
+				h5 Datasets:
+			.col-sm-10.col-xs-9
+				ul.list-inline
+					| {{~ it.list('datasets') :data }}
+					li.toggle-group.btn-group.btn-group-xs(data-collection='datasets', data-id='{{= data.identifier }}')
+						a.btn.btn-xs.btn-dataset.toggle-source
+							i.fa.fa-flask &nbsp;
+							| {{= data.identifier }}
+						a.toggle-target.btn.btn-xs.btn-tools(style='display: none;', href="{{= (data.url ? data.url : 'http://doi.org/' + data.identifier) }}")
+							i.fa.fa-link &nbsp;
+							span.label Browse
+						| {{? it.button_type === 'result-list' }}
+						a.filter-preset.btn.btn-xs.toggle-target.btn-tools(style='display: none;')
+							i.fa.fa-search &nbsp;
+							span.label Filter
+						| {{?}}
+						| {{? data.github }}
+						a.btn-github.btn.btn-xs.btn-tools.toggle-target(style='display: none;', href='https://github.com/{{= data.github }}')
+							i.fa.fa-fw.fa-github &nbsp;
+							span.label Github
+							| {{= data.github }}
+						| {{?}}
+						| {{? data.figshare }}
+						a.btn-figshare.btn.btn-xs.btn-tools.toggle-target(style='display: none;', href='{{= data.figshare }}')
+							i.ai.ai-fw.ai-figshare &nbsp;
+							span.label figshare
+						| {{?}}
+						.btn-group
+							a.cite-this.toggle-target.btn.btn-xs.btn-tools.dropdown-toggle(style='display: none;', data-toggle='dropdown')
+								i.fa.fa-quote-right &nbsp;
+								span.label Cite!
+								span.caret
+							ul.dropdown-menu.pull-right(role='menu')
+								li
+									a.export(data-export='bibtex') Literaturverwaltung (BibTeX)
+								li
+									a.export(data-export='ris') Literaturverwaltung (RIS)
+								li
+									a.export(data-export='endnote') Literaturverwaltung (EndNote)
+								li
+									a.export(data-export='apa') APA Style Citation
+					| {{~}}
+		.row.infolis-row-databases
+			.col-sm-2.col-xs-3
+				h5
+					| Databases:
+			.col-sm-10.col-xs-9
+				ul.list-inline
+					| {{~ it.list('databases') :data }}
+					li.toggle-group.btn-group.btn-group-xs(data-collection='databases', data-id='{{= data.identifier }}')
+						a.btn.btn-xs.btn-default.btn-database.toggle-source
+							i.fa.fa-fw.fa-database &nbsp;
+							| {{= data.identifier }}
+						a.toggle-target.btn.btn-xs.btn-tools(style='display: none;', href='{{= data.url }}')
+							i.fa.fa-fw.fa-link &nbsp;
+							span.label Browse
+						| {{? it.button_type === 'result-list' }}
+						a.filter-preset.btn.btn-xs.toggle-target.btn-tools(style='display: none;')
+							i.fa.fa-search &nbsp;
+							span.label Filter
+						| {{?}}
+						a.cite-this.toggle-target.btn.btn-xs.btn-tools.dropdown-toggle(style='display: none;', data-toggle='dropdown')
+							i.fa.fa-quote-right &nbsp;
+							span.label Cite!
+							span.caret
+						ul.dropdown-menu.pull-right(role='menu')
+							li
+								a.export(data-export='bibtex') Literaturverwaltung (BibTeX)
+							li
+								a.export(data-export='ris') Literaturverwaltung (RIS)
+							li
+								a.export(data-export='ris') Literaturverwaltung (EndNote)
+							li
+								a.export(data-export='apa') APA Style Citation
+					| {{~}}
+		.row.infolis-status
+			| status: 
+			span.infolis-status {{= it.status }}
+			| | type: {{= it.button_type }}
+			span.infolis-result-length | Found {{= it.results.length || &quot;0&quot; }} publications
+	.infolis-logo
+		.infolis-logo-img.animated
+			.infolis-logo-overlay.animated
+		.infolis-number {{= it.number_found() &gt; 0 ? it.number_found() : '0' }}
+| {{? it.button_type === 'result-list' }}
+#infolis-filterbox(style='display:none')
+	.input-group.input-group-lg
+		span.input-group-addon
+			// <span class="checkbox-inline btn-database">
+			i.fa.fa-fw.fa-database &nbsp;
+			input#filter-databases(type='checkbox')
+			// </span>
+			// <span class="checkbox-inline btn-dataset">
+			i.fa.fa-fw.fa-flask &nbsp;
+			input#filter-datasets(type='checkbox')
+			// </span>
+		input#filter-input.form-control(type='text', placeholder='Database, Index, Name ...')
+		span.input-group-addon
+			span#filter-status
+			i#filter-clear.fa.fa-fw.fa-times &nbsp;
+| {{?}}
