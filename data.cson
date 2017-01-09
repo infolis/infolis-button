@@ -1,0 +1,264 @@
+# vim: ft=coffee :
+# :nnoremap <buffer> <F5> :!cson2json % > %:t:r.json<cr>
+uri2doi:
+	'http://www.igi-global.com/article/a-prescriptive-stock-market-investment-strategy-for-the-restaurant-industry-using-an-artificial-neural-network-methodology/142778': '10.4018/IJBAN.2016010101'
+	'http://indexes.nikkei.co.jp/en/nkave/index/profile?idx=nk225': 'nk225'
+	'https://ideas.repec.org/h/eee/finchp/2-13.html': 'RePEc:eee:finchp:2-13'
+
+datasets:
+	# http://ec.europa.eu/eurostat/statistics-explained/index.php/Labour_markets_at_regional_level/de#Ver.C3.B6ffentlichungen
+	'eurostat:tgs00054(2004)':
+		doi:['eurostat:tgs00054']
+		url: 'http://ec.europa.eu/eurostat/tgm/table.do?tab=table&plugin=1&language=de&pcode=tgs00054'
+		title: 'Erwerbstätigenquote der Altersgruppe 55-64, nach NUTS-2-Regionen, Stand 31.12.2004'
+	"jaes/savva001":
+		doi: ["jaes/savva001"]
+		title: "Replication of Grier, Henry, Olekalns and Shields (2004)--The Asymmetric Effects of Uncertainty on Inflation and Output Growth"
+		url: "http://qed.econ.queensu.ca/jae/datasets/savva001/"
+	"10.4232/1.12209":
+		title: "ALLBUS/GGSS 2014"
+		doi: ["10.4232/1.12209"]
+	"10.4232/1.12288":
+		title: "ALLBUS/GGSS 2015"
+		doi: ["10.4232/1.12209"]
+	"10.5281/zenodo.13293":
+		title: 'Researcher Data Publication Perceptions'
+		doi: ["10.5281/zenodo.13293"]
+		github: ['JEK-III/ResearcherDataPubPerceptions'] 
+	'10.6084/m9.figshare.c.2011262.v1':
+		title: 'Stock Return Predictability: A Factor-Augmented Predictive Regression System with Shrinkage Method'
+		doi: ['10.6084/m9.figshare.c.2011262.v1']
+		figshare: 'https://figshare.com/collections/Stock_Return_Predictability_A_Factor_Augmented_Predictive_Regression_System_with_Shrinkage_Method/2011262'
+	"1902.1/UQRPVVDBHI":
+		title: "Replication data for: Consumption-Based Asset Pricing"
+		doi: ["1902.1/UQRPVVDBHI"]
+		citation_ris: """
+Provider: Harvard Dataverse
+Content: text/plain; charset="us-ascii"
+TY  - DBASE
+T1  - Replication data for: Consumption-Based Asset Pricing
+AU  - John Y. Campbell
+DO  - hdl/1902.1/UQRPVVDBHI
+PY  - 2013
+UR  - http://hdl.handle.net/1902.1/UQRPVVDBHI
+PB  - Harvard Dataverse
+ER  - 
+"""
+		citation_endnote: """
+<?xml version='1.0' encoding='UTF-8'?>
+<xml>
+  <records>
+    <record>
+      <ref-type name="Online Database">45</ref-type>
+      <contributors>
+        <authors>
+          <author>John Y. Campbell</author>
+        </authors>
+      </contributors>
+      <titles>
+        <title>Replication data for: Consumption-Based Asset Pricing</title>
+      </titles>
+      <section>2007-12-03</section>
+      <dates>
+        <year>2013</year>
+      </dates>
+      <publisher>Harvard Dataverse</publisher>
+      <urls>
+        <related-urls>
+          <url>http://hdl.handle.net/1902.1/UQRPVVDBHI</url>
+        </related-urls>
+      </urls>
+      <electronic-resource-num>hdl/1902.1/UQRPVVDBHI</electronic-resource-num>
+    </record>
+  </records>
+</xml>
+"""
+
+databases:
+	eulfs:
+		name: 'Eurostat LFS'
+		url: 'http://ec.europa.eu/eurostat/web/lfs/data/main-tables'
+	toyo_keizai:
+		name: 'Toyo Keizai'
+		url: 'http://dbs.toyokeizai.net/en/'
+	topix:
+		name: 'Tokyo Stock Price Index'
+		url: 'http://www.bloomberg.com/quote/TPX:IND'
+	dax30:
+		name: 'Deutscher Aktienindex DAX'
+		url: 'http://www.bloomberg.com/quote/DAX:IND'
+	nasdaq:
+		name: 'NASDAQ'
+		url: 'http://www.bloomberg.com/quote/NASDAQ:IND'
+	ftse100:
+		name: 'FTSE 100 Index (UKX)'
+		url: 'http://www.bloomberg.com/quote/UKX:IND'
+	sp500:
+		name: "Standard and Poor's 500"
+		url: 'http://www.bloomberg.com/quote/SPX:IND'
+	sensex:
+		name: 'BME SENSEX'
+		url: 'http://www.bloomberg.com/quote/SENSEX:IND'
+	shshazr:
+		name: 'Shenzhen A-Share'
+		url: 'http://www.bloomberg.com/quote/SZASHR:IND'
+	csmar:
+		name: 'China Stock Market Accounting Research'
+		url: 'http://csmar.gtadata.com/'
+	yahoo_finance:
+		name: "Yahoo Finance"
+		url: "https://in.finance.yahoo.com"
+	bist100:
+		name: "Borsa Istanbul 100 Index"
+		url: "http://www.bloomberg.com/quote/XU100:IND"
+	gfd:
+		name: 'Global Finance Data'
+		url: 'https://www.globalfinancialdata.com'
+	csi100:
+		name: 'CSI 100 Index'
+		url: 'http://www.bloomberg.com/quote/SHCSI100:IND'
+	nikkei225:
+		name: 'Nikkei Index'
+		url: 'http://indexes.nikkei.co.jp/en/nkave/index/profile?idx=nk225'
+	eia_monthly:
+		url: 'http://www.eia.gov/totalenergy/data/monthly/'
+		name: 'Monthly Energy Review'
+	eia_steo:
+		name: 'Short-term Energy Outlook'
+		url: 'http://www.eia.gov/forecasts/steo/'
+	amadeus:
+		name: 'Amadeus'
+		url: 'https://amadeus.bvdinfo.com'
+	osiris:
+		name: "Osiris"
+		url: "http://www.bvdinfo.com/en-gb/our-products/company-information/international-products/osiris"
+	bloomberg:
+		name: "Bloomberg"
+		url: "http://www.bloomberg.com/professional/"
+	worldscope:
+		name: "Worldscope"
+		url: "http://extranet.datastream.com/Data/Worldscope/index.htm"
+	datastream:
+		name: "DataStream"
+		url: "http://financial.thomsonreuters.com/en/products/tools-applications/trading-investment-tools/datastream-macroeconomic-analysis.html"
+	trna:
+		name: "TRNA"
+		url: "http://financial.thomsonreuters.com/en/products/data-analytics/financial-news-feed.html"
+	sdc:
+		name: "SDC"
+		url: "http://thomsonreuters.com/en/products-services/financial/market-data/sdc-platinum.html"
+	crsp:
+		name: "CRSP"
+		url: "http://www.crsp.com/"
+	ctbs:
+		name: "CTBS"
+		url: "http://www.nelson.com/assessment/classroom-CTBS.html"
+
+publications:
+	"10.1093/rfs/hht068":
+		doi: ["10.1093/rfs/hht068"]
+		databases: ["bloomberg"]
+	"10.1207/s15327035ex1302_2":
+		doi: ["10.1207/s15327035ex1302_2"]
+		databases: ["ctbs"]
+	"10.1093/rfs/hht044":
+		doi: ["10.1093/rfs/hht044"]
+		databases: ["osiris", "worldscope", "datastream"]
+	"10.1093/rfs/hhu032":
+		doi: ["10.1093/rfs/hhu032"]
+		databases: ["trna", "bloomberg"]
+	"10.1093/rfs/hht082":
+		doi: ["10.1093/rfs/hht082"]
+		databases: ["sdc", "crsp"]
+	"10.1080/095372897235398":
+		doi: ["10.1080/095372897235398"]
+		title: "An algorithm to dynamically adjust the number of kanbans in stochastic processing times and variable demand environment"
+		databases: ["sdc","crsp"]
+		datasets: ['10.4232/1.12209']
+	"10.1093/rfs/6.2.327":
+		doi: ["10.1093/rfs/6.2.327"]
+		title: "A Closed-Form Solution for Options with Stochastic Volatility with Applications to Bond and Currency Options"
+		authors: "Steven L. Heston "
+		databases: ['crsp']
+		datasets: ['10.4232/1.12209']
+	"10.1093/rfs/5.4.553":
+		doi: ["10.1093/rfs/5.4.553"]
+		databases: ['amadeus']
+	#
+	# Google Scholar: Search 'stock market prediction'
+	#
+	"10.1016/j.chaos.2016.01.004":
+		doi: ["10.1016/j.chaos.2016.01.004"]
+		title: "Application of artificial neural network for the prediction of stock market returns: The case of the Japanese stock market"
+		databases: ['nikkei225']
+	"10.1111/jofi.12364":
+		doi: ["10.1111/jofi.12364"]
+		title: "Stock Market Volatility and Learning"
+		datasets: ["1902.1/UQRPVVDBHI"]
+		databases: ['gfd']
+	"10.1016/j.eswa.2015.09.029":
+		doi: ["10.1016/j.eswa.2015.09.029"]
+		title: "Integrating metaheuristics and Artificial Neural Networks for improved stock price prediction"
+		databases: ['bloomberg', 'bist100']
+	"10.1007/978-3-319-23258-4_24":
+		doi: ['10.1007/978-3-319-23258-4_24']
+		title: 'An Effective Stock Price Prediction Technique Using Hybrid Adaptive Neuro Fuzzy Inference System Based on Grid Partitioning'
+		databases: ['yahoo_finance']
+	"10.1002/jae.2500":
+		doi:['10.1002/jae.2500']
+		title: 'Anticipation, Tax Avoidance, and the Price Elasticity of Gasoline Demand'
+		datasets: ['jaes/savva001']
+		databases: ['eia_steo', 'eia_monthly']
+	"10.1145/2838731":
+		doi: ['10.1145/2838731']
+		title: 'A Tensor-Based Information Framework for Predicting the Stock Market'
+		databases: ['csmar', 'csi100', 'sensex']
+	"10.1016/j.eswa.2016.01.016":
+		doi:['10.1016/j.eswa.2016.01.016']
+		title: 'Efficient stock price prediction using a Self Evolving Recurrent Neuro-Fuzzy Inference System optimized through a Modified technique'
+		databases: ['bloomberg', 'sensex', 'sp500']
+	"10.4018/IJBAN.2016010101":
+		doi: ['10.4018/IJBAN.2016010101']
+		title: 'A Prescriptive Stock Market Investment Strategy for the Restaurant Industry using an Artificial Neural Network Methodology'
+		databases: ['yahoo_finance']
+	#
+	# Primo ->  'Stock price prediction'
+	#
+	"10.1016/j.eswa.2010.08.076":
+		doi: ["10.1016/j.eswa.2010.08.076"]
+		title: 'Translation Invariant Morphological Time-lag Added Evolutionary Forecasting method for stock market prediction'
+		databases: ['bloomberg']
+	#
+	# Primo ->  'Stock price prediction', newest, peer-reviewd journal
+	#
+	'10.1016/j.eswa.2015.01.035':
+		doi: ['10.1016/j.eswa.2015.01.035']
+		title: 'Stock market trend prediction using dynamical Bayesian factor graph'
+		databases: ['shshazr', 'sp500']
+	'10.1016/j.eswa.2015.04.056':
+		doi:['10.1016/j.eswa.2015.04.056']
+		title: 'Boosting Trading Strategies performance using VIX indicator together with a dual-objective Evolutionary Computation optimizer'
+		databases: ['nasdaq', 'nikkei225', 'sp500', 'ftse100', 'dax30']
+	# http://www.tandfonline.com/doi/full/10.1080/07474938.2014.977086
+	'10.1080/07474938.2014.977086':
+		doi:['10.1080/07474938.2014.977086']
+		title:'Stock Return Predictability: A Factor-Augmented Predictive Regression System with Shrinkage Method'
+		datasets: ['10.6084/m9.figshare.c.2011262.v1']
+		databases: ['toyo_keizai', 'topix']
+	# https://ideas.repec.org/h/eee/finchp/2-13.html
+	"RePEc:eee:finchp:2-13":
+		doi:["RePEc:eee:finchp:2-13"]
+		title: 'Consumption-based asset pricing'
+		datasets: ['1902.1/UQRPVVDBHI']
+	'10.1371/journal.pone.0117619':
+		doi:['10.1371/journal.pone.0117619']
+		title: 'Researcher Perspectives on Publication and Peer Review of Data'
+		datasets: ['10.5281/zenodo.13293']
+	'ZAAA2005110027513181411142812171':
+	    doi:['10.17877/DE290R-1856']
+	    url: 'http://dx.doi.org/10.17877/DE290R-1856'
+	    title: 'Die Beschäftigung Älterer in Europa zwischen Vorruhestand und "Work-Line"'
+	    datasets: ['eurostat:tgs00054(2004)']
+	    databases: ['eulfs']
+
+
